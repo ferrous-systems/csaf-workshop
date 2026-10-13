@@ -11,7 +11,9 @@ static EXPECTED_DATE_FORMAT: &[BorrowedFormatItem<'static>] =
 /// Starts the date guessing.
 ///
 /// Intermediary information about the game state is sent to the receiver of the given message sender.
-/// The `retrieve_guess`
+/// The `retrieve_guess` function is called to retrieve a new guess on every turn.
+/// Custom arguments `retrieve_args` are passed through to the `retrieve_guess` function.
+/// The `guess_timeout` is used to raise a timeout if no new guess has been entered.
 pub fn guess_date<A: Send + Sync>(
     msg_sender: std::sync::mpsc::Sender<String>,
     retrieve_guess: fn(&A) -> Result<String, Box<dyn std::error::Error + Send + Sync + 'static>>,
