@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.3",
   "version": 1,
-  "serialNumber": "urn:uuid:d3c8b99c-7455-429d-a0f0-21202af6df43",
+  "serialNumber": "urn:uuid:0f01409b-bc26-4465-99a5-83f0ea3850fc",
   "metadata": {
-    "timestamp": "2026-10-13T16:29:06.102346000Z",
+    "timestamp": "2026-10-14T12:36:34.529951000Z",
     "tools": [
       {
         "vendor": "CycloneDX",
@@ -14,25 +14,25 @@
     ],
     "component": {
       "type": "application",
-      "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.0",
+      "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.1",
       "name": "esittely",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "scope": "required",
-      "purl": "pkg:cargo/esittely@0.1.0?download_url=file://.",
+      "purl": "pkg:cargo/esittely@0.1.1?download_url=file://.",
       "components": [
         {
           "type": "library",
-          "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.0 bin-target-0",
+          "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.1 bin-target-0",
           "name": "esittely",
-          "version": "0.1.0",
-          "purl": "pkg:cargo/esittely@0.1.0?download_url=file://.#src/lib.rs"
+          "version": "0.1.1",
+          "purl": "pkg:cargo/esittely@0.1.1?download_url=file://.#src/lib.rs"
         },
         {
           "type": "application",
-          "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.0 bin-target-1",
+          "bom-ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.1 bin-target-1",
           "name": "esittely",
-          "version": "0.1.0",
-          "purl": "pkg:cargo/esittely@0.1.0?download_url=file://.#src/main.rs"
+          "version": "0.1.1",
+          "purl": "pkg:cargo/esittely@0.1.1?download_url=file://.#src/main.rs"
         }
       ]
     },
@@ -188,16 +188,16 @@
     },
     {
       "type": "library",
-      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.1.0",
+      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.2.2",
       "author": "Jacob Pratt <jacob@jhpratt.dev>",
       "name": "num-conv",
-      "version": "0.1.0",
+      "version": "0.2.2",
       "description": "`num_conv` is a crate to convert between integer types without using `as` casts. This provides better certainty when refactoring, makes the exact behavior of code more explicit, and allows using turbofish syntax. ",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "51d515d32fb182ee37cda2ccdcb92950d6a3c2893aa280e540671c2cd0f3b1d9"
+          "content": "521739c6d2bac4aa25192232afe6841231376b2b26d4d9fae5ecf8ca5772e441"
         }
       ],
       "licenses": [
@@ -205,7 +205,7 @@
           "expression": "MIT OR Apache-2.0"
         }
       ],
-      "purl": "pkg:cargo/num-conv@0.1.0",
+      "purl": "pkg:cargo/num-conv@0.2.2",
       "externalReferences": [
         {
           "type": "vcs",
@@ -347,16 +347,16 @@
     },
     {
       "type": "library",
-      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.7",
+      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.9",
       "author": "Jacob Pratt <open-source@jhpratt.dev>, Time contributors",
       "name": "time-core",
-      "version": "0.1.7",
+      "version": "0.1.9",
       "description": "This crate is an implementation detail and should not be relied upon directly.",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b36ee98fd31ec7426d599183e8fe26932a8dc1fb76ddb6214d05493377d34ca"
+          "content": "9e1c906769ad99c88eaa54e728060edef082f8e358ff32030cb7c7d315e81109"
         }
       ],
       "licenses": [
@@ -364,7 +364,7 @@
           "expression": "MIT OR Apache-2.0"
         }
       ],
-      "purl": "pkg:cargo/time-core@0.1.7",
+      "purl": "pkg:cargo/time-core@0.1.9",
       "externalReferences": [
         {
           "type": "vcs",
@@ -374,16 +374,16 @@
     },
     {
       "type": "library",
-      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.25",
+      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.32",
       "author": "Jacob Pratt <open-source@jhpratt.dev>, Time contributors",
       "name": "time-macros",
-      "version": "0.2.25",
+      "version": "0.2.32",
       "description": "    Procedural macros for the time crate.     This crate is an implementation detail and should not be relied upon directly. ",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71e552d1249bf61ac2a52db88179fd0673def1e1ad8243a00d9ec9ed71fee3dd"
+          "content": "7e689342a48d2ea927c87ea50cabf8594854bf940e9310208848d680d668ed85"
         }
       ],
       "licenses": [
@@ -391,7 +391,7 @@
           "expression": "MIT OR Apache-2.0"
         }
       ],
-      "purl": "pkg:cargo/time-macros@0.2.25",
+      "purl": "pkg:cargo/time-macros@0.2.32",
       "externalReferences": [
         {
           "type": "vcs",
@@ -401,16 +401,16 @@
     },
     {
       "type": "library",
-      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time@0.3.45",
+      "bom-ref": "registry+https://github.com/rust-lang/crates.io-index#time@0.3.55",
       "author": "Jacob Pratt <open-source@jhpratt.dev>, Time contributors",
       "name": "time",
-      "version": "0.3.45",
+      "version": "0.3.55",
       "description": "Date and time library. Fully interoperable with the standard library. Mostly compatible with #![no_std].",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f9e442fc33d7fdb45aa9bfeb312c095964abdf596f7567261062b2a7107aaabd"
+          "content": "cdb87b95ec50ddfa440816d227a17b2ccbdda963a316a727fda0fc4334f7d134"
         }
       ],
       "licenses": [
@@ -418,7 +418,7 @@
           "expression": "MIT OR Apache-2.0"
         }
       ],
-      "purl": "pkg:cargo/time@0.3.45",
+      "purl": "pkg:cargo/time@0.3.55",
       "externalReferences": [
         {
           "type": "website",
@@ -433,10 +433,10 @@
   ],
   "dependencies": [
     {
-      "ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.0",
+      "ref": "path+file:///Users/manuelhatzl/Documents/Projects/Customers/BSI/Workshop/csaf-workshop/esittely#0.1.1",
       "dependsOn": [
         "registry+https://github.com/rust-lang/crates.io-index#rand@0.10.3",
-        "registry+https://github.com/rust-lang/crates.io-index#time@0.3.45"
+        "registry+https://github.com/rust-lang/crates.io-index#time@0.3.55"
       ]
     },
     {
@@ -452,9 +452,7 @@
     },
     {
       "ref": "registry+https://github.com/rust-lang/crates.io-index#deranged@0.5.8",
-      "dependsOn": [
-        "registry+https://github.com/rust-lang/crates.io-index#powerfmt@0.2.1"
-      ]
+      "dependsOn": []
     },
     {
       "ref": "registry+https://github.com/rust-lang/crates.io-index#getrandom@0.4.3",
@@ -469,7 +467,7 @@
       "dependsOn": []
     },
     {
-      "ref": "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.1.0",
+      "ref": "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.2.2",
       "dependsOn": []
     },
     {
@@ -493,25 +491,25 @@
       "dependsOn": []
     },
     {
-      "ref": "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.7",
+      "ref": "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.9",
       "dependsOn": []
     },
     {
-      "ref": "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.25",
+      "ref": "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.32",
       "dependsOn": [
-        "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.1.0",
-        "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.7"
+        "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.2.2",
+        "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.9"
       ]
     },
     {
-      "ref": "registry+https://github.com/rust-lang/crates.io-index#time@0.3.45",
+      "ref": "registry+https://github.com/rust-lang/crates.io-index#time@0.3.55",
       "dependsOn": [
         "registry+https://github.com/rust-lang/crates.io-index#deranged@0.5.8",
-        "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.1.0",
+        "registry+https://github.com/rust-lang/crates.io-index#num-conv@0.2.2",
         "registry+https://github.com/rust-lang/crates.io-index#powerfmt@0.2.1",
         "registry+https://github.com/rust-lang/crates.io-index#serde_core@1.0.229",
-        "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.7",
-        "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.25"
+        "registry+https://github.com/rust-lang/crates.io-index#time-core@0.1.9",
+        "registry+https://github.com/rust-lang/crates.io-index#time-macros@0.2.32"
       ]
     }
   ]

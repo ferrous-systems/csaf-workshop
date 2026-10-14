@@ -11,7 +11,7 @@ use std::process;
 
 fn main() {
     // TODO: Change this to `esittely::guess_date_v2` to fix the vulnerability
-    match esittely::guess_date_v1() {
+    match esittely::guess_date_v2() {
         Ok(_) => process::exit(0),
         Err(err) => {
             eprintln!("Error while playing: {err}");
