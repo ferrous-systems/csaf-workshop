@@ -5,4 +5,5 @@ edition = "2024"
 
 [dependencies]
 rand = "0.10"
+# TODO: Set version to '0.3.55' to fix the vulnerability.
 time = { version = "=0.3.45", features = ["macros", "parsing"] }

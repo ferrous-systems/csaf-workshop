@@ -1,6 +1,6 @@
-use std::time::Duration;
-
 use time::format_description::BorrowedFormatItem;
+
+pub mod retrieval;
 
 const MAX_YEAR: i32 = 9999;
 
@@ -8,80 +8,69 @@ const MAX_YEAR: i32 = 9999;
 static EXPECTED_DATE_FORMAT: &[BorrowedFormatItem<'static>] =
     time::macros::format_description!("[year padding:none]-[month]-[day]");
 
+/// Initial version for playing "Guess the Date".
+///
+/// It allows unbounded input for a date guess.
+pub fn guess_date_v1() -> Result<(), Box<dyn std::error::Error>> {
+    guess_date(retrieval::retrieve_guess_unbounded, &())
+}
+
+/// Fixed version for playing "Guess the Date".
+///
+/// It restricts the input for a date guess to stay within the range for the maximum possible date.
+pub fn guess_date_v2() -> Result<(), Box<dyn std::error::Error>> {
+    let max_guess_len = "9999-12-31".len() + 1; // +1 for optional carriage return
+    guess_date(retrieval::retrieve_guess_bounded, &max_guess_len)
+}
+
 /// Starts the date guessing.
 ///
 /// Intermediary information about the game state is sent to the receiver of the given message sender.
 /// The `retrieve_guess` function is called to retrieve a new guess on every turn.
 /// Custom arguments `retrieve_args` are passed through to the `retrieve_guess` function.
 /// The `guess_timeout` is used to raise a timeout if no new guess has been entered.
-pub fn guess_date<A: Send + Sync>(
-    msg_sender: std::sync::mpsc::Sender<String>,
-    retrieve_guess: fn(&A) -> Result<String, Box<dyn std::error::Error + Send + Sync + 'static>>,
+fn guess_date<A>(
+    retrieve_guess: fn(&A) -> Result<String, Box<dyn std::error::Error>>,
     retrieve_args: &A,
-    guess_timeout: Duration,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    msg_sender.send("Your guess must follow the form: yyyy-mm-dd".to_string())?;
-    msg_sender.send("e.g. 2026-10-13".to_string())?;
-    msg_sender.send(String::new())?;
-    msg_sender.send(format!("Years are in the range: 1..={MAX_YEAR}"))?;
-    msg_sender.send("Years before 1000, no padding is needed".to_string())?;
-    msg_sender.send("e.g. 100-10-13".to_string())?;
-    msg_sender.send("---------------------------------".to_string())?;
+    println!("New game! Guess the Date");
+    println!("Your guess must follow the form: yyyy-mm-dd");
+    println!("e.g. 2026-10-13");
+    println!();
+    println!("Years are in the range: 1..={MAX_YEAR}");
+    println!("Years before 1000, no padding is needed");
+    println!("e.g. 100-10-13");
+    println!("---------------------------------");
 
     let secret = secret_date();
     let start = std::time::Instant::now();
 
     loop {
-        msg_sender.send("Enter guess:".to_string())?;
+        println!("Enter guess:");
 
-        let (tx, rx) = std::sync::mpsc::channel();
-
-        let args = retrieve_args;
-        let line = std::thread::scope(|s| {
-            s.spawn(move || {
-                let result = retrieve_guess(args);
-                let _ = tx.send(result.map(|line| line.trim().to_owned()));
-            });
-
-            let line = match rx.recv_timeout(guess_timeout) {
-                Ok(Ok(line)) => line,
-                Ok(Err(err)) => {
-                    return Err::<std::string::String, Box<dyn std::error::Error>>(
-                        format!("Read input error: {err}").into(),
-                    );
-                }
-                Err(std::sync::mpsc::RecvTimeoutError::Timeout) => {
-                    return Err("Time out while waiting for user input".into());
-                }
-                Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => {
-                    return Err("Reading user input for new guess failed".into());
-                }
-            };
-
-            Ok(line)
-        })?;
+        let line = retrieve_guess(retrieve_args)?;
 
         match time::Date::parse(&line, EXPECTED_DATE_FORMAT) {
             Ok(guess) => {
                 if guess.eq(&secret) {
                     let elapsed = start.elapsed();
 
-                    msg_sender.send("Correct guess!!!".into())?;
-                    msg_sender.send(format!("It took you: {}s", elapsed.as_secs()))?;
+                    println!("Correct guess!!!");
+                    println!("It took you: {}s", elapsed.as_secs());
                     return Ok(());
                 } else if guess.lt(&secret) {
-                    msg_sender.send("--- Later ---".into())?;
+                    println!("--- Later ---");
                 } else {
-                    msg_sender.send("-- Earlier --".into())?;
+                    println!("-- Earlier --");
                 }
             }
             Err(err) => {
-                msg_sender.send(format!("Invalid date format! Error: {err}"))?;
-                msg_sender.send("Expected valid date in form: yyyy-mm-dd".into())?;
+                println!("Invalid date format! Error: {err}");
+                println!("Expected valid date in form: yyyy-mm-dd");
             }
         }
 
-        msg_sender.send("---------------------------------".into())?;
+        println!("---------------------------------");
     }
 }
 

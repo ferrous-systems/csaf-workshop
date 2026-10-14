@@ -1,7 +1,7 @@
 # `esittely` - Guess the Date
 
 This crate implements the "Guess the Date" game.
-It can be started in a terminal or integrated into your application.
+It is intended to be played in a terminal.
 
 ## Play in Terminal
 
@@ -30,7 +30,13 @@ Enter guess:
 Now it is your turn to guess the secret date.
 Each guess will tell you if the secret date is *earlier* or *later* than your guess.
 
-## Integrate in your App
+## Crate Structure
 
-The game logic is extracted into the `esittely::guess_date()` function that can be integrated into your crate.
-This could, for example, be an online service that lets people play "Guess the Date" on a website.
+The game logic is handled in `esittely::guess_date()`, which takes in a function to retrieve a new guess from the terminal.
+Two versions for retrieving user input are implemented as `esittely::guess_date_v1()` and `esittely::guess_date_v2()`.
+The `v1` version allows unbounded user input, while the `v2` version restricts the input to the length of a formatted date.
+
+Inside the `main()` function, `v1` is used initially for `esittely` `v0.1.0`.
+This is used as vulnerability source for `CVE-2026-99999` in the workshop.
+Change it to the `v2` version and update the crate version to `0.1.1` in `Cargo.toml`
+to fix the vulnerability in a semver-adhering version.
