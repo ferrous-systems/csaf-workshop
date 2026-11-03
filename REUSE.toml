@@ -1,0 +1,15 @@
+version = 1
+
+[[annotations]]
+path = ["**/README.md", "csaf/*.json"]
+precedence = "override"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2026 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>"
+Software-Engineering = "2026 Ferrous Systems GmbH <https://ferrous-systems.com>"
+
+# Generated files
+[[annotations]]
+path = ["esittely/esittely.cdx.json", "esittely/Cargo.lock"]
+precedence = "override"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "None"

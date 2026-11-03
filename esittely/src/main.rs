@@ -2,6 +2,10 @@
 //!
 //! Try to guess the secret date by entering a valid date in your terminal.
 //! Your guess must follow the form: yyyy-mm-dd
+//!
+//! SPDX-License-Identifier: Apache-2.0
+//! SPDX-FileCopyrightText: 2026 German Federal Office for Information Security (BSI) <https://www.bsi.bund.de>
+//! Software-Engineering: 2026 Ferrous Systems GmbH <https://ferrous-systems.com>
 
 use std::process;
 
